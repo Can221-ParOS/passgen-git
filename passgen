@@ -1,22 +1,30 @@
 #!/usr/bin/env python
 
 #Select a random set of characters
-import random 
+import string
+import secrets
 
 #Create a list of characters to generate a password from
 chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*"
 
+#Parse options and user input
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument("--number", type=int, default=1, help="amount of passwords to generate")
-parser.add_argument("--length", type=int, default=16, help="length of the password to generate")
+parser.add_argument("--number", "-n", type=int, default=1, help="amount of passwords to generate")
+parser.add_argument("--length", "-l", type=int, default=16, help="length of the password to generate")
+parser.add_argument("--mode", "-m",  type=int, default=0, help="changes password generation output. 0 is the default, and 1 outputs a secure token string in hexadecimal format")
 args = parser.parse_args()
-number = args.number
 length = args.length
 number = args.number
+mode = args.mode 
 
-for p in range(number):
-    password = " "
-    for c in range(length):
-        password += random.choice(chars)
-    print(password)
+#Do the thing. Password Generator go brrrrr. 
+if mode == 0:  
+    def random_secure_string(stringLength):
+        secureStr = ''.join((secrets.choice(string.ascii_letters) for i in range(stringLength)))
+        return secureStr
+    for p in range(number):
+        print(random_secure_string(length))
+if mode == 1:
+    for p in range(number):
+        print ("Secure hexadecimal string token", secrets.token_hex(length))
