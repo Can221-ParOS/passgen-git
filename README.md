@@ -13,7 +13,7 @@ Command line arguments:
                         amount of passwords to generate
 
   --length LENGTH, -l LENGTH
-                        length of the password to generate
+                        length of the password to generate (Does not affect mode 2)
 
   --mode MODE, -m MODE  changes password generation output. 0 is the default meant for standard use,
                         1 outputs a Secure Token String in hexadecimal format, and 2 outputs a UUID4 Secure       Unique String ID
