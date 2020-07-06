@@ -17,4 +17,4 @@ Command line arguments:
 	
 
 In development, so if you have any problems or suggestions then open an issue detailing your thoughts.
-
+Penetration testers are welcome to have a go at the passwords it generates. I would love some feedback on the actual security of the generated passwords.
