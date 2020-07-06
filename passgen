@@ -30,4 +30,3 @@ if mode == 2:
         import uuid
         stringId = uuid.uuid4()
         print("Secure unique string ID", stringId)
-
