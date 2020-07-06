@@ -1,5 +1,5 @@
 # simple-password-generator
-A simple password generator written in python (python 3.6 or higher will work). 
+A simple password generator written in python (python 3.8, but anything higher than python 3.6 will work). 
 For more secure passwords, set a higher password length
 In development, so if you have any problems or suggestions then open an issue detailing your thoughts.
 Default password length is 16 characters.
