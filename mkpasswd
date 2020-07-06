@@ -1,4 +1,4 @@
-        #!/usr/bin/env python
+        #!/usr/py
 
 #Select a random set of characters
 import random
