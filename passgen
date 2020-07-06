@@ -4,15 +4,12 @@
 import string
 import secrets
 
-#Create a list of characters to generate a password from
-chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*"
-
 #Parse options and user input
 import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--number", "-n", type=int, default=1, help="amount of passwords to generate")
 parser.add_argument("--length", "-l", type=int, default=16, help="length of the password to generate")
-parser.add_argument("--mode", "-m",  type=int, default=0, help="changes password generation output. 0 is the default, and 1 outputs a secure token string in hexadecimal format")
+parser.add_argument("--mode", "-m",  type=int, default=0, help="changes password generation output. 0 is the default, 1 outputs a secure token string in hexadecimal format, and 2 outputs a UUID4 secure unique string ID ")
 args = parser.parse_args()
 length = args.length
 number = args.number
@@ -21,10 +18,16 @@ mode = args.mode
 #Do the thing. Password Generator go brrrrr. 
 if mode == 0:  
     def random_secure_string(stringLength):
-        secureStr = ''.join((secrets.choice(string.ascii_letters) for i in range(stringLength)))
+        secureStr = ''.join((secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in range(stringLength)))
         return secureStr
     for p in range(number):
         print(random_secure_string(length))
 if mode == 1:
     for p in range(number):
         print ("Secure hexadecimal string token", secrets.token_hex(length))
+if mode == 2: 
+    for p in range(number):
+        import uuid
+        stringId = uuid.uuid4()
+        print("Secure unique string ID", stringId)
+
